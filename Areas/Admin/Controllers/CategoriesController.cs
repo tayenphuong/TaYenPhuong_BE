@@ -36,18 +36,22 @@ namespace TaYenPhuong_BE.Areas.Admin.Controllers
             }
             return View(category);
         }
-
+        // có 2 hàm Create
         // GET: Admin/Categories/Create
+        // hàm create đầu tiên : get dữ liệu
+        // chạy form Create
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: Admin/Categories/Create
+        //POST : dữ liệu nhập vào từ form lên DB
+        // hàm create thứ hai: đem dl vào DB
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken] // loại trừ việc lưu bản ghi giống nhau 
         public ActionResult Create([Bind(Include = "CategoryID,CategoryName")] Category category)
         {
             if (ModelState.IsValid)
@@ -61,17 +65,19 @@ namespace TaYenPhuong_BE.Areas.Admin.Controllers
         }
 
         // GET: Admin/Categories/Edit/5
+        // giống hàm Details // lấy dl của một id nào đó
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            Details(id);
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
             Category category = db.Categories.Find(id);
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
+            //if (category == null)
+            //{
+            //    return HttpNotFound();
+            //}
             return View(category);
         }
 

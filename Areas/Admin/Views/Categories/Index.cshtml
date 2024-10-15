@@ -6,9 +6,9 @@
 }
 
 <h2>Index</h2>
-
+@*định dạng nút nhấn theo bootstrap 4 clop số 8*@
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("THÊM MỚI", "Create",null, new {@class ="btn btn-primary"})
 </p>
 <table class="table">
     <tr>
@@ -24,9 +24,9 @@
             @Html.DisplayFor(modelItem => item.CategoryName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CategoryID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CategoryID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CategoryID })
+            @Html.ActionLink("CẬP NHẬT", "Edit", new { id=item.CategoryID }, new { @class = "btn btn-success btn-sm" }) |
+          
+            @Html.ActionLink("XÓA", "Delete", new { id = item.CategoryID }, new { @class = "btn btn-dark btn-sm" })
         </td>
     </tr>
 }
